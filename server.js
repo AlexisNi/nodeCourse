@@ -21,7 +21,7 @@ app.use(middleware.logger);
 
 
 app.get('/about',middleware.requireAuthentication,function (req,res) {
-    res.send('About Page');
+    res.send('About Page!!');
 });
 
 app.use(expess.static(__dirname+'/public'));
