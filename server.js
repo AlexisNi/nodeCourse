@@ -3,8 +3,7 @@
  */
 var expess=require('express');
 var app = expess();
-var port=3000;
-var day=new Date().toString();
+var PORT=process.env.PORT || 3000;
 var middleWare=require('./middleWare');
 
 
@@ -18,7 +17,7 @@ app.get('/about',middleWare.requireAuthentication,function (req,res) {
 
 app.use(expess.static(__dirname+'/public'));
 
-app.listen(port,function () {
-    console.log('Express Server Started'+' at Port '+port)
+app.listen(PORT,function () {
+    console.log('Express Server Started'+' at Port '+PORT)
 });
 
