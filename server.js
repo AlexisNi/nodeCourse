@@ -5,22 +5,14 @@ var expess=require('express');
 var app = expess();
 var port=3000;
 var day=new Date().toString();
-var middleware={
-    requireAuthentication:function (req,res,next) {
-        console.log('private route hit');
-        next();
-    },
-    logger:function (req,res,next) {
-        console.log('Request : '+req.method+''+req.originalUrl+' Date ' +day);
-        next();
-    }
-};
+var middleWare=require('./middleWare');
 
 
-app.use(middleware.logger);
+
+app.use(middleWare.logger);
 
 
-app.get('/about',middleware.requireAuthentication,function (req,res) {
+app.get('/about',middleWare.requireAuthentication,function (req,res) {
     res.send('About Page!!');
 });
 
